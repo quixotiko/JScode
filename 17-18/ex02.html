@@ -18,13 +18,16 @@
             var bin_bit = parseInt(document.getElementById("bin-bit").value);
             var number = Number(decNumber);
             var x = number, y, z = [];
+            //非数字字符
             if(number === NaN){
                 alert("请输入一个十进制非负整数！");
             }
+            //不是正数
             else if(number < 0)
             {
                 alert("请输入一个十进制非负整数！");
             }
+            //不是整数
             else if(Math.floor(number) != number){
                 alert("请输入一个十进制非负整数！");
             }
@@ -36,7 +39,7 @@
                 }while(x >= 1);
             }
             if(bin_bit > z.length){
-                var temp = z.length;
+                var temp = z.length;//z.length会在循环中改变，故需要先缓存
                 for(var i = 0;i < bin_bit - temp; i++){
                     z.unshift(0);
                 }
@@ -48,6 +51,7 @@
         }
         button.onclick = function(){
             var inputText = inputBox.value;
+            //Number()函数会把空值转换为0，故需要先验证是否为空值
             if(inputText === ""){
                 alert("请输入一个十进制非负整数！");
             }
