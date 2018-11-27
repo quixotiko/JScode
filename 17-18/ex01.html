@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result">运算结果</p>
+    <script>
+    	var inputBox = document.getElementById("dec-number");
+    	var button = document.getElementById("trans-btn");
+    	var result = document.getElementById("result");
+		function dec2bin(decNumber) {
+		    // 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+		    var number = Number(decNumber);
+		    var x = number, y, z = [];
+		    if(number === NaN){
+		    	alert("请输入一个十进制非负整数！");
+		    }
+		    else if(number < 0)
+		    {
+		    	alert("请输入一个十进制非负整数！");
+		    }
+		    else if(Math.floor(number) != number){
+		    	alert("请输入一个十进制非负整数！");
+		    }
+		    else{
+		    	do{
+		    		y = x / 2;
+		    		z.unshift(x % 2);
+		    		x = Math.floor(y);
+		    	}while(x >= 1);
+		    }
+		    result.innerHTML = z.join("");
+		}
+
+		// 实现点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+		// Some coding
+		button.onclick = function(){
+			var inputText = inputBox.value;
+			if(inputText === ""){
+				alert("请输入一个十进制非负整数！");
+			}
+			else
+			    dec2bin(inputText);
+		}
+    </script>
+</body>
+</html>
